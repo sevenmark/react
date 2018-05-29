@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>计数器</title>
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+
+
+<script type="text/babel">
+var LightningCount = React.createClass({
+	getInitialState: function(){
+		return {
+			strikes: 0
+		}
+	},
+	timerTick: function(){
+		this.setState({
+			strikes: this.state.strikes + 100
+		})
+	},
+	componentDidMount: function(){
+		setInterval(this.timerTick, 1000)
+	},
+	render: function(){
+		return (
+			<div>{this.state.strikes}</div>
+		)
+	}
+})
+
+
+var LightningCountDisplay = React.createClass({
+	render: function(){
+		var lightningStyle = {
+			width: 250,
+			padding: 40,
+			color: "#999",
+			textAlign: "center",
+			backgroundColor: "#000",
+			borderRadius: 10,
+			fontSize: 20
+		}
+
+		return (
+			<div style={lightningStyle}>
+				<LightningCount></LightningCount>
+			</div>
+		)
+	}
+})
+
+
+
+ReactDOM.render(
+	<div>
+		<LightningCountDisplay />
+	</div>,
+	document.getElementById('example')
+);
+</script>
+</body>
+</html>
