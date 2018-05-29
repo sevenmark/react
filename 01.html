@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello React!</title>
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<style>
+.color{color: #ff0000;}
+</style>
+</head>
+<body>
+<div id="example"></div>
+
+
+<script type="text/babel">
+var HelloWorld = React.createClass({
+	render: function(){
+		return (
+			<h1 className="color">Hello, {this.props.myTarget}</h1>
+		)
+	}
+})
+
+var Buttonify = React.createClass({
+	render: function(){
+		console.log(this.props.children)
+		return (
+			<div>
+				<button type="button" className={this.props.name}>{this.props.children}</button>
+			</div>
+		)
+	}
+})
+
+
+ReactDOM.render(
+	<div>
+		<HelloWorld myTarget="world!" />
+		<Buttonify name="red"><div><p><span>123</span></p></div></Buttonify>
+	</div>,
+	document.getElementById('example')
+);
+</script>
+</body>
+</html>
